@@ -1,26 +1,79 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Badge from "../components/Badge.astro";
+import AboutMe from "../components/AboutMe.astro";
 import Stack from "../components/Stack.astro";
+import Section from "../components/Section.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
 ---
 
-<Layout 
+<Layout
 	title="Francisco Arjona - Junior Full Stack Developer"
-	description="Hire me as a Software Engineer for your project"
+	description="Hire me as a Software Engineer for your project."
 >
-	<main>
-		<section class="w-full mx-auto lg:w-[740px] py-32">
-			<h1 class="text-5xl font-bold flex justify-start gap-x-4 pb-4">
-				Hey, I'm Paco
+	<main class="px-8">
+		<Section class="py-16 md:py-36">
+			<h1
+				class="text-3xl md:text-4xl lg:text-5xl font-bold flex justify-start gap-x-4 pb-6 lg:pb-8"
+			>
+				Hey, I'm Paco 👋🏻
 			</h1>
-			<h2 class="text-2xl text-wrap opacity-90 pb-4">
+			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px] opacity-90 pb-4">
 				+1 year of experience. Full Stack Developer. From Málaga, Spain.
 			</h2>
-			<h3 class="text-xl opacity-80 pb-8"><span class="text-yellow-200/90">I'm currently actively seeking employment.</span> I'm not looking for a specific sector or project, but one that allows me to continue growing in my career as a professional.</h3>
+			<h3 class="text-xl pb-8 text-pretty">
+				<span class="text-fuchsia-400"
+					>I'm currently actively seeking employment.</span
+				> I'm not looking for a specific sector or project, but one that allows me
+				to continue growing in my career as a professional.
+			</h3>
+			<div id="typed-strings" class="">
+				<p>I <em>work</em> with Astro, React, NextJS, Node.</p>
+			</div>
 
-			<Stack/>
-		</section>
+			<div class="text-center pt-2 pb-10"><span id="typed"></span></div>
+
+			<Stack />
+		</Section>
+
+		<div class="space-y-24">
+			<Section id="experience">
+				<h2
+					class="flex items-center mb-6 text-3xl font-semibold gap-x-3 dark:text-white"
+				>
+					Work Experience
+				</h2>
+				<Experience />
+			</Section>
+	
+			<Section id="projects">
+				<h2
+					class="flex items-center mb-6 text-3xl font-semibold gap-x-3 dark:text-white"
+				>
+					Projects
+				</h2>
+				<Projects />
+			</Section>
+	
+			<Section id="about">
+				<h2
+					class="flex items-center mb-6 text-3xl font-semibold gap-x-8 dark:text-white"
+				>
+					About Me
+				</h2>
+				<AboutMe />
+			</Section>
+		</div>
+		
 	</main>
 </Layout>
 
+<script>
+  import Typed from "typed.js";
+
+  var typed = new Typed("#typed", {
+    stringsElement: "#typed-strings",
+    typeSpeed: 50,
+    loop: true,
+  });
+</script>

@@ -1,0 +1,104 @@
+---
+import Javascript from "./icons/Javascript.astro";
+import Nextjs from "./icons/Nextjs.astro";
+import Nodejs from "./icons/Nodejs.astro";
+import React from "./icons/React.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Typescript from "./icons/Typescript.astro";
+
+const TAGS = {
+  NEXT: {
+    class: "text-white",
+    icon: Nextjs,
+  },
+  TAILWIND: {
+    class: "text-white",
+    icon: Tailwind,
+  },
+  REACT: {
+    class: "text-white",
+    icon: React,
+  },
+  JAVASCRIPT: {
+    class: "text-white",
+    icon: Javascript,
+  },
+  TYPESCRIPT: {
+    class: "text-white",
+    icon: Typescript,
+  },
+  NODE: {
+    class: "text-white",
+    icon: Nodejs,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Sport Analytica",
+    job: "Frontend Developer",
+    description:
+      "Platform to analyze training sessions via video and track the users sports performance",
+    image: "/images/sportanalytica-screenshot.webp",
+    tags: [TAGS.TYPESCRIPT, TAGS.NEXT],
+    active: true,
+  },
+  {
+    title: "Wanna Hang Out",
+    job: "Frontend Developer",
+    description:
+      "Application to connect people and places. A project that was born to launch a start-up, although it finally did not continue due to business reasons",
+    image: "/images/who-screenshot.webp",
+    tags: [TAGS.JAVASCRIPT, TAGS.REACT, TAGS.TAILWIND],
+    active: false,
+  },
+  {
+    title: "Emergy",
+    job: "Full Stack Developer",
+    description:
+      "Mobile application to consult emergency manuals and request assistance in any crisis situation",
+    image: "/images/emergy-screenshot.webp",
+    tags: [TAGS.JAVASCRIPT, TAGS.NODE, TAGS.REACT],
+    active: false,
+  },
+];
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, job, description, tags, active }) => (
+      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt="Screenshot from project"
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              loading="lazy"
+              src={image}
+            />
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 md:max-w-lg">
+            <h3 class="text-2xl font-bold dark:text-gray-100">{title} {active && <span class="text-lg text-green-500">•</span>}</h3>
+          <div class="flex flex-wrap mt-2">
+            <ul class="flex flex-row mb-2 gap-x-2">
+              {tags.map((tag) => (
+                <li>
+                  <span class={`flex gap-x-1 ${tag.class} py-1 `}>
+                    <tag.icon />
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-2 dark:text-gray-400">
+              <span class="text-fuchsia-400">{job}.</span>
+              {description}
+            </div>
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>

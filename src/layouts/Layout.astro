@@ -1,6 +1,7 @@
 ---
-import Header from '../components/Header.astro';
-import '@fontsource/metropolis/500.css';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "@fontsource/metropolis/500.css";
 
 interface Props {
 	title: string;
@@ -20,10 +21,11 @@ const { description, title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+	<body class="relative bg-gray-50  dark:bg-neutral-950 text-black dark:text-white">
+		<div class="absolute top-0 z-[-2] h-screen w-screen dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
 		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
@@ -33,7 +35,8 @@ const { description, title } = Astro.props;
 	}
 
 	html {
-		font-family: 'Metropolis', sans-serif;
+		font-family: "Metropolis", sans-serif;
+		scroll-behavior: smooth;
 	}
 
 	body {
@@ -41,5 +44,29 @@ const { description, title } = Astro.props;
 		flex-direction: column;
 		justify-content: center;
 		padding-top: 36px;
+	}
+
+	#projects svg {
+		width: 25;
+		height: 25px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+
+	@media only screen and (max-width: 600px) {
+		svg {
+			width: 30px;
+			height: 30px;
+		}
+	}
+
+	header-nav {
+		animation: blur linear both 0.5s;
+		animation-timeline: scroll();
+		animation-range: 0 500px;
 	}
 </style>

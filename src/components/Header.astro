@@ -1,28 +1,97 @@
 ---
-import GitHub from '../components/icons/GitHub.astro'
-import LinkedIn from '../components/icons/LinkedIn.astro'
-import Email from '../components/icons/Email.astro'
+import ThemeSwitch from "./ThemeSwitch.astro"
+
+const navItems = [
+  {
+    title: 'Experience',
+    label: 'experience',
+    url: '#experience'
+  },
+  {
+    title: 'Projects',
+    label: 'projects',
+    url: '#projects'
+  },
+  {
+    title: 'About',
+    label: 'about',
+    url: '#about'
+  }
+]
 ---
 
-<header class="flex justify-between items-center pb-6 w-[1120px] mx-auto">
-  <img
-    class="rounded-full size-12"
-    src="/images/my-photo.jpeg"
-    alt="my-photo"
-  />
+<header class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2">
+  <nav
+    class="flex px-4 text-sm font-medium rounded-full shadow bg-slate-400/40 backdrop-blur-lg dark:text-gray-200 justify-center items-center dark:bg-slate-400/40 dark:backdrop-blur-lg"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="relative block px-2 py-2 transition hover:text-fuchsia-500 dark:hover:text-fuchsia-400"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
 
-  <nav class="flex gap-x-10 opacity-80">
-    <a href="https://github.com/pacoarjonaj" target="_blank" rel="noopener">
-      <GitHub />
-    </a>
-
-    <a href="https://www.linkedin.com/in/francisco-arjona/" target="_blank" rel="noopener">
-      <LinkedIn />
-    </a>
-
-    <a href="/" target="_blank" rel="noopener">
-      <Email />
-    </a>
+    <ThemeSwitch />
   </nav>
-
 </header>
+
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section")
+    const navItems = document.querySelectorAll("header nav a")
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-yellow-500")
+            } else {
+              item.classList.remove("text-yellow-500")
+            }
+          })
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    })
+
+    sections.forEach((section) => {
+      observer.observe(section)
+    })
+
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect()
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section)
+        })
+      }
+    }
+  })
+</script>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur bg-gray-300/60 dark:bg-gray-800/60 ring-white/10;
+    }
+  }
+</style>

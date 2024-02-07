@@ -1,0 +1,21 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    title: "Full Stack Developer in cober.io",
+    description: "Responsible for the development and launch of an application in Shopify to offer the company's services.",
+    date: "02/2023 - 11/2023",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-700 dark:border-gray-200 ml-1">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

@@ -1,26 +1,21 @@
 ---
+import Social from "./Social.astro"
+
 const currentYear = new Date().getFullYear()
 ---
 
 <footer
-  class="rounded-lg shadow m-4 bg-slate-400/40 p-1 backdrop-blur-lg w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
+  id="#footer"
+  class="rounded-lg shadow m-4 bg-slate-400/40 dark:text-gray-200 dark:bg-fuchsia-800/40 p-2 backdrop-blur-xl w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
 >
   <div
-    class="w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between"
+    class="w-full max-w-screen-xl mx-auto flex items-center justify-between"
   >
     <span class="text-sm sm:text-center dark:text-zinc-200/90"
       >© {currentYear}
-      <a href="" class="hover:underline">Francisco Arjona Jiménez</a>. All rights reserved.
+      <a href="https://www.linkedin.com/in/francisco-arjona/" class="hover:underline">pacoarjonaj</a>. All rights reserved.
     </span>
-    <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-    >
-      <li>
-        <a href="/#about" class="hover:underline me-4 md:me-6">About me</a>
-      </li>
-      <li>
-        <a href="mailto:arjonapaco0@gmail.com" class="hover:underline">Contact</a>
-      </li>
-    </ul>
+    
+    <Social />
   </div>
 </footer>

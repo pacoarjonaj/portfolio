@@ -1,0 +1,32 @@
+---
+import GitHubIcon from "./icons/GitHub.astro";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import EmailIcon from "./icons/Email.astro";
+---
+
+<nav class="flex gap-2">
+  <a 
+    class="inline-flex cursor-pointer"
+    href="https://www.linkedin.com/in/francisco-arjona/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <GitHubIcon class="size-5 text-neutral-800 hover:scale-150 transition dark:text-neutral-200"/>
+  </a>
+
+  <a 
+    class="inline-flex"
+    href="https://github.com/pacoarjonaj"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <LinkedInIcon class="size-5  text-neutral-800 hover:scale-150 transition  dark:text-neutral-200"/>
+  </a>
+
+  <a 
+    class="inline-flex"
+    href="mailto:arjonapaco0@gmail.com"
+  >
+    <EmailIcon class="size-5  text-neutral-800 hover:scale-150 transition dark:text-neutral-200"/>
+  </a>
+</nav>

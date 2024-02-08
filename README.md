@@ -7,7 +7,7 @@
 
 <p></p>
 
-<img src="/images/front-page.webp"></img>
+<img src="front-page.webp"></img>
 
 ## 🛠️ Stack
 
